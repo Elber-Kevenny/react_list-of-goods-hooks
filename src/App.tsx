@@ -50,7 +50,7 @@ export const App: React.FC = () => {
   const [sortedType, setSortedType] = useState<SortType>(SortType.Default);
   const [isReversed, setIsReversed] = useState(false);
 
- /* const isOriginalOrder = (arr1: Good[], arr2: Good[]): boolean => {
+  /* const isOriginalOrder = (arr1: Good[], arr2: Good[]): boolean => {
     if (arr1.length !== arr2.length) {
       return false;
     }
@@ -130,18 +130,17 @@ export const App: React.FC = () => {
         >
           Reverse
         </button>
-        <button
-          aria-pressed={sortedType === SortType.Default}
-          type="button"
-          className={
-            sortedType === SortType.Default
-              ? 'button is-danger'
-              : 'button is-danger is-light'
-          }
-          onClick={handleReset}
-        >
-          Reset
-        </button>
+        {(sortedType !== SortType.Default || isReversed) && (
+          <button
+            aria-pressed={sortedType === SortType.Default}
+            type="button"
+            className= 'button is-danger is-light'
+
+            onClick={handleReset}
+          >
+            Reset
+          </button>
+        )}
       </div>
       <GoodList goods={goods} />
     </div>
